@@ -1,0 +1,77 @@
+/* Neon Coast — dark neon editor theme. The cover itself is drawn on canvas. */
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: #12081f; color: #f4eefc; font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+.app { display: flex; gap: 28px; align-items: flex-start; justify-content: center; padding: 22px; }
+.controls { width: 340px; flex: none; display: flex; flex-direction: column; gap: 14px; }
+.controls header h1 {
+  margin: 0; font-size: 34px; letter-spacing: 0.02em; text-transform: uppercase;
+  background: linear-gradient(90deg, #ff9a3d, #ff5e62 45%, #ff00a8);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.tagline { margin: 4px 0 0; color: #c9b8e0; }
+.lead { margin: 8px 0 0; font-weight: 700; color: #f4eefc; }
+.features { margin: 8px 0 0; padding-left: 18px; color: #c9b8e0; font-size: 13px; }
+.features li { margin: 2px 0; }
+.offline-tag {
+  display: inline-block; margin: 0 0 10px; padding: 3px 8px; border-radius: 999px;
+  background: #123332; color: #7dffce; border: 1px solid #2a7a6a;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
+}
+.demo-note { color: #ffcf4d; font-weight: 600; }
+.thumb .demo-badge {
+  display: inline-block; margin: 4px 6px 0; padding: 1px 6px; border-radius: 999px;
+  background: #ffcf4d; color: #1c0b2e; font-size: 11px; font-weight: 800;
+}
+#status.toast { background: #123332; border: 1px solid #2a7a6a; border-radius: 7px; padding: 6px 8px; }
+#status.toast-error { background: #3d1420; border: 1px solid #a33; color: #ffb3b3; border-radius: 7px; padding: 6px 8px; }
+fieldset { margin: 0; padding: 12px 14px 14px; border: 1px solid #4a2a6e; border-radius: 10px; background: #1c0b2e; }
+legend { padding: 0 6px; font-weight: 800; letter-spacing: 0.04em; color: #ffcf4d; }
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 14px; }
+.radios { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; }
+.radios label { flex-direction: row; align-items: center; font-weight: 500; }
+.row { display: flex; gap: 10px; align-items: flex-end; }
+.row > * { flex: 1; }
+input[type="text"], select {
+  font: inherit; padding: 8px 10px; border: 1px solid #5b3a86; border-radius: 7px;
+  background: #12081f; color: #f4eefc;
+}
+input[type="color"] { width: 100%; height: 36px; padding: 2px; border: 1px solid #5b3a86; border-radius: 7px; background: #12081f; }
+input[type="range"] { width: 100%; accent-color: #ff00a8; }
+input[type="file"] { display: none; }
+.file-btn {
+  display: block; text-align: center; padding: 10px; border-radius: 8px; cursor: pointer;
+  background: linear-gradient(90deg, #ff5e62, #ff00a8); color: #fff; font-weight: 800;
+}
+button {
+  font: inherit; font-weight: 700; padding: 9px 12px; border: 0; border-radius: 8px;
+  background: #2c1547; color: #f4eefc; cursor: pointer;
+}
+button:hover { background: #3d1d63; }
+.exports { display: grid; gap: 8px; margin-top: 10px; }
+.exports button { background: linear-gradient(90deg, #ff9a3d, #ff5e62); color: #fff; }
+.exports button:hover { filter: brightness(1.1); }
+.hint { margin: 6px 0 0; font-size: 13px; color: #b9a6d4; font-weight: 400; }
+.panel-line { margin: 0 0 6px; }
+.thumbs { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.thumb { width: 96px; padding: 0 0 4px; overflow: hidden; background: #12081f; border: 1px solid #5b3a86; }
+.thumb img { display: block; width: 100%; height: 64px; object-fit: cover; }
+.thumb span { display: block; padding: 4px 6px 0; font-size: 12px; font-weight: 500; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#status { margin: 8px 0 0; min-height: 1.2em; color: #7dffce; font-weight: 600; }
+.fine { margin: 0; font-size: 12px; color: #8d7aa8; }
+.preview { flex: 1; max-width: 760px; position: sticky; top: 22px; }
+.preview canvas {
+  display: block; width: auto; max-width: 100%; height: auto; max-height: calc(100vh - 80px);
+  margin: 0 auto; background: #000; box-shadow: 0 12px 44px rgba(0, 0, 0, 0.55); cursor: grab; touch-action: none;
+}
+.preview canvas:active { cursor: grabbing; }
+.preview .hint { text-align: center; color: #b9a6d4; }
+/* Screenshot mode: the finished cover fills the frame, controls hidden. */
+body.shot-cover .controls, body.shot-cover .preview .hint { display: none; }
+body.shot-cover .app { padding: 0; }
+body.shot-cover .preview { max-width: none; position: static; }
+body.shot-cover canvas { width: 100vw; height: 100vh; max-height: none; box-shadow: none; }
+@media (max-width: 900px) {
+  .app { flex-direction: column; }
+  .controls { width: 100%; }
+  .preview { position: static; max-width: none; width: 100%; }
+}
